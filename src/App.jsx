@@ -6,16 +6,24 @@ import InputLabel from "@mui/material/InputLabel";
 import Input from "@mui/material/Input";
 import Todo from "./Todo.jsx";
 import { db } from "./firebase";
-import { onSnapshot, collection } from "firebase/firestore";
+import {
+  onSnapshot,
+  collection,
+  addDoc,
+  serverTimestamp,
+} from "firebase/firestore";
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState("");
 
   useEffect(() => {
+    // this code here... fires when the app.js loads
     const unsubscribe = onSnapshot(collection(db, "todos"), (snapshot) => {
       console.log("Current data: ", snapshot.docs);
-      setTodos(snapshot.docs.map((doc) => doc.data().todo));
+      setTodos(
+        snapshot.docs.map((doc) => ({ todo: doc.data().todo, id: doc.id }))
+      );
     });
 
     return unsubscribe;
@@ -25,8 +33,14 @@ function App() {
 
   const addTodo = (e) => {
     e.preventDefault(); // prevents page refresh
+
+    
     // console.log("I am working");
-    setTodos([...todos, input]);
+    // setTodos([...todos, input]);
+    addDoc(collection(db, "todos"), {
+      todo: input,
+      timestamp: serverTimestamp(),
+    });
     setInput(""); // clears input field after clicking add todo button
     // console.log(todos);
   };
@@ -48,8 +62,8 @@ function App() {
         Add Todo
       </Button>
       <ul>
-        {todos.map((todo, index) => (
-          <Todo text={todo} key={index} />
+        {todos.map((todo) => (
+          <Todo text={todo.todo} id={todo.id} />
         ))}
       </ul>
     </div>
