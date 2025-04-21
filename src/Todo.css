@@ -1,21 +1,21 @@
 .todo {
-  margin: 2px;
-  padding: 2px;
+  margin: 5px;
+  padding: 5px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border: 3px solid black;
-  background-color: rgb(249, 182, 123);;
+  background-color: rgb(249, 182, 123);
+  border: 1px solid black;
 }
 
-.container1{
-  margin: 0;
-  padding: 0;
+.todo:hover {
+  border: 3px solid black;
+  box-shadow: 10px 10px 10px rgba(35, 35, 35, 0.404);
 }
 
 .container2 {
-  margin: 10px;
-  padding: 10px;
+  margin: 15px;
+  padding: 15px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -29,12 +29,12 @@
   background-color: rgb(247, 40, 40);
   color: white;
   font-size: small;
-  border: 2px solid black;
   border-radius: 10px;
 }
 
 .delete:hover {
   cursor: pointer;
+  border: 2px solid black;
 }
 
 .edit {
@@ -44,10 +44,31 @@
   background-color: rgb(218, 39, 218);
   color: white;
   font-size: small;
-  border: 2px solid black;
   border-radius: 10px;
 }
 
 .edit:hover {
   cursor: pointer;
+  border: 2px solid black;
+}
+
+.edit-todo {
+  margin: 5px;
+  padding: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  border: 2px solid #000;
+  box-shadow: 10px 10px 1000px 1000px rgba(35, 35, 35, 0.404);
+  background-color: white;
+}
+.update-btn {
+  margin: 5px;
+  padding: 5px;
+}
+.cancel-btn {
+  margin: 5px;
+  padding: 5px;
 }

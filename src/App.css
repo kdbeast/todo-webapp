@@ -7,22 +7,28 @@
 }
 
 .button{
+  margin: 2px;
+  padding: 2px;
   background-color: blue;
   color: white;
-  font-size: medium;
+  font-size: large;
   border: 2px solid black;
 }
 .button:hover{
   background-color: rgb(93, 93, 223);
-  
+  box-shadow: 10px 10px 10px rgba(35, 35, 35, 0.404);
 }
 
 .input{
-  font-size: large;
+  font-size: medium;
+  margin: 2px;
+  padding: 2px;
   border: 2px solid black;
   }
 
 .container {
+  height: fit-content;
+  width: 600px;
   margin: 10px;
   padding: 10px;
   color: black;
