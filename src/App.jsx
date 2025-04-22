@@ -53,7 +53,6 @@ function App() {
   const completedTodos = todos.filter((todo) => todo.isComplete);
 
   return (
-    <>
       <div className="container">
         <h1 className="title">React TODO App</h1>
         <div className="mini-container1">
@@ -118,7 +117,6 @@ function App() {
           </div>
         )}
       </div>
-    </>
   );
 }
 
