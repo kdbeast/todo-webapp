@@ -72,3 +72,16 @@
   margin: 5px;
   padding: 5px;
 }
+
+.checkbox{
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-decoration: line-through;
+  color: black;
+  background-color: rgb(255, 55, 55);
+  border: 2px solid black;
+  border-radius: 10px;;
+}

@@ -16,7 +16,7 @@
 }
 .button:hover{
   background-color: rgb(93, 93, 223);
-  box-shadow: 10px 10px 10px rgba(35, 35, 35, 0.404);
+  box-shadow:  10px 10px 10px rgba(35, 35, 35, 0.404);
 }
 
 .input{

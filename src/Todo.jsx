@@ -4,10 +4,21 @@ import { useState } from "react";
 import "./Todo.css";
 import Load from "./Load";
 
-function Todo({ text, id, time }) {
+function Todo({ text, id, time, isComplete }) {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [checked] = useState(false);
+  const [loadingToggle, setLoadingToggle] = useState(false);
+
+  const handleToggleComplete = () => {
+    setLoadingToggle(true);
+    updateDoc(doc(db, "todos", id), {
+      isComplete: !isComplete,
+    });
+    setLoadingToggle(false);
+  };
+
   const handleOpen = () => setOpen(true);
 
   const updateTodo = async () => {
@@ -31,22 +42,30 @@ function Todo({ text, id, time }) {
 
   return (
     <>
-      <div className="todo">
+      <div className={isComplete ? "checkbox" : "todo"}>
         <div className="container1">
+          <input
+            type="checkbox"
+            checked={isComplete}
+            onChange={handleToggleComplete}
+            disabled={loadingToggle || checked || loading}
+          />
           <h3>{text}</h3>
           <p>{time}</p>
         </div>
-        <div className="container2">
-          <button className="edit" onClick={handleOpen}>
-            Edit
-          </button>
-          <button className="delete" onClick={handleDelete}>
-            Delete
-          </button>
-        </div>
+        {!isComplete && (
+          <div className="container2">
+            <button className="edit" onClick={handleOpen}>
+              Edit ✏️
+            </button>
+            <button className="delete" onClick={handleDelete}>
+              Delete 🗑️
+            </button>
+          </div>
+        )}
       </div>
 
-      {open === true && (
+      {open && (
         <div className="edit-todo" open={open}>
           <h1>Update Todo</h1>
           <input
@@ -54,12 +73,13 @@ function Todo({ text, id, time }) {
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
-          {
-            loading ? <Load /> : 
-          <button className="update-btn" onClick={updateTodo}>
-            Update Todo
-          </button>
-          }
+          {loading ? (
+            <Load />
+          ) : (
+            <button className="update-btn" onClick={updateTodo}>
+              Update Todo
+            </button>
+          )}
           <button className="cancel-btn" onClick={() => setOpen(false)}>
             Cancel
           </button>
