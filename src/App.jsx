@@ -80,12 +80,11 @@ function App() {
           {todos.length === 0 && <Load />}
 
           {todos.length !== 0 && (
-            <div className="incomplete-todos-container mini-container2">
+            <div className="incomplete-todos-container">
               <h2>Tasks</h2>
               {incompleteTodos.length === 0 && (
                 <h4 className="empty-list-message">No tasks here!</h4>
               )}
-              <ul>
                 {incompleteTodos.map((todo) => (
                   <Todo
                     key={todo.id}
@@ -95,7 +94,6 @@ function App() {
                     isComplete={todo.isComplete}
                   />
                 ))}
-              </ul>
             </div>
           )}
         </div>

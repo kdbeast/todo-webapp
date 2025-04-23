@@ -1,6 +1,4 @@
 .title{
-  margin: 5px;
-  padding: 5px;
   background-color: rgb(247, 157, 23);
   border: 3px solid black;
   border-radius: 10px;
@@ -21,14 +19,11 @@
 
 .input{
   font-size: medium;
-  margin: 2px;
-  padding: 2px;
   border: 2px solid black;
   }
 
 .container {
-  height: fit-content;
-  width: 600px;
+  width: 500px;
   margin: 10px;
   padding: 10px;
   color: black;
@@ -41,11 +36,10 @@
   background-color: peachpuff;
 }
 
-.mini-container1{
-  margin: 2px;
-  padding: 2px;
+.incomplete-todos-container{
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
