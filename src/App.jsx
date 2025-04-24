@@ -53,9 +53,10 @@ function App() {
   const completedTodos = todos.filter((todo) => todo.isComplete);
 
   return (
-      <div className="container">
-        <h1 className="title">React TODO App</h1>
-        <div className="mini-container1">
+    <div className="container">
+      <h1 className="title">React TODO App</h1>
+      <div className="mini-container1">
+        <form>
           <input
             className="input"
             placeholder="Add todo"
@@ -66,55 +67,55 @@ function App() {
             <Load />
           ) : (
             <button
+              type="submit"
               className="button"
               disabled={!input}
-              type="submit"
               onClick={addTodo}
             >
-              {" "}
-              Add{" "}
+              Add
             </button>
           )}
-        </div>
-        <div className="mini-container2">
-          {todos.length === 0 && <Load />}
+        </form>
+      </div>
+      <div className="mini-container2">
+        {todos.length === 0 && <Load />}
 
-          {todos.length !== 0 && (
-            <div className="incomplete-todos-container">
-              <h2>Tasks</h2>
-              {incompleteTodos.length === 0 && (
-                <h4 className="empty-list-message">No tasks here!</h4>
-              )}
-                {incompleteTodos.map((todo) => (
-                  <Todo
-                    key={todo.id}
-                    text={todo.todo}
-                    id={todo.id}
-                    time={todo.time}
-                    isComplete={todo.isComplete}
-                  />
-                ))}
-            </div>
-          )}
-        </div>
-
-        {completedTodos.length > 0 && (
-          <div className="completed-todos-container mini-container2">
-            <h2>Completed</h2>
-            <ul>
-              {completedTodos.map((todo) => (
-                <Todo
-                  key={todo.id}
-                  text={todo.todo}
-                  id={todo.id}
-                  time={todo.time}
-                  isComplete={todo.isComplete}
-                />
-              ))}
-            </ul>
+        {todos.length !== 0 && (
+          <div className="incomplete-todos-container">
+            <h2>Tasks</h2>
+            {incompleteTodos.length === 0 && (
+              <h4 className="empty-list-message">No tasks here!</h4>
+            )}
+            {incompleteTodos.map((todo) => (
+              <Todo
+                key={todo.id}
+                text={todo.todo}
+                id={todo.id}
+                time={todo.time}
+                isComplete={todo.isComplete}
+              />
+            ))}
           </div>
         )}
       </div>
+
+      {completedTodos.length > 0 && (
+        <div className="completed-todos-container mini-container2">
+          <h2>Completed</h2>
+          <ul>
+            {completedTodos.map((todo) => (
+              <Todo
+                key={todo.id}
+                text={todo.todo}
+                id={todo.id}
+                time={todo.time}
+                isComplete={todo.isComplete}
+              />
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
   );
 }
 
